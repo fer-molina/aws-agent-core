@@ -49,7 +49,20 @@
   "knowledgeBases": [],
   "credentials": [],
   "evaluators": [],
-  "onlineEvalConfigs": [],
+  "onlineEvalConfigs": [
+    {
+      "name": "QualityMonitor",
+      "agent": "CustomerSupport",
+      "evaluators": [
+        "Builtin.GoalSuccessRate",
+        "Builtin.Correctness",
+        "Builtin.ToolSelectionAccuracy",
+        "Builtin.Conciseness"
+      ],
+      "samplingRate": 100,
+      "enableOnCreate": true
+    }
+  ],
   "agentCoreGateways": [
     {
       "name": "my-gateway-secure",

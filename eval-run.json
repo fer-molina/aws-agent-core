@@ -1,0 +1,253 @@
+{
+  "sessionsRequested": 8,
+  "sessionsEvaluated": 8,
+  "results": [
+    {
+      "evaluatorArn": "arn:aws:bedrock-agentcore:::evaluator/Builtin.Correctness",
+      "evaluatorId": "Builtin.Correctness",
+      "evaluatorName": "Builtin.Correctness",
+      "context": {
+        "spanContext": {
+          "sessionId": "691f9e94-bed9-4866-9cac-ad08a4bb8ff3",
+          "traceId": "6b075d83363f9c814cab9d120ee70252"
+        }
+      },
+      "explanation": "There is no ground truth or external context (like system instructions or tool definitions) provided beyond the user's question 'What can you do?'. The assistant describes itself as a customer support assistant capable of looking up product information and return policies, and directs other issues elsewhere. Without additional context contradicting these claims, the response appears self-consistent and plausible as a description of its own capabilities. There are no verifiable factual errors in the response itself, as it is a self-description rather than a factual claim about the external world that could be checked against a ground truth. Since no contradicting information is provided, the response should be considered correct in describing its own functionality.",
+      "value": 1,
+      "label": "Perfectly Correct",
+      "tokenUsage": {
+        "inputTokens": 888,
+        "outputTokens": 161,
+        "totalTokens": 1049
+      }
+    },
+    {
+      "evaluatorArn": "arn:aws:bedrock-agentcore:::evaluator/Builtin.Correctness",
+      "evaluatorId": "Builtin.Correctness",
+      "evaluatorName": "Builtin.Correctness",
+      "context": {
+        "spanContext": {
+          "sessionId": "e016e6b8-174f-49a8-98a3-1ff8ac85ac3d",
+          "traceId": "6b08966526864d6d436fdb4430f6f3ae"
+        }
+      },
+      "explanation": "The response accurately reports the product info (Smart Watch, $249.99, fitness tracker, heart rate monitor, GPS, 5-day battery) and the return policy (30 days, original packaging, unused or defective, full refund to original payment method), all matching the tool outputs. It also reasonably notes it cannot change communication preferences directly, which is a plausible limitation rather than a factual error. No hallucinated or contradicted information is present. The response addresses the core intent and omissions, if any, are minor and do not affect correctness.",
+      "value": 1,
+      "label": "Perfectly Correct",
+      "tokenUsage": {
+        "inputTokens": 1254,
+        "outputTokens": 143,
+        "totalTokens": 1397
+      }
+    },
+    {
+      "evaluatorArn": "arn:aws:bedrock-agentcore:::evaluator/Builtin.Correctness",
+      "evaluatorId": "Builtin.Correctness",
+      "evaluatorName": "Builtin.Correctness",
+      "context": {
+        "spanContext": {
+          "sessionId": "1e14546b-8301-4027-bbb8-e695431d312a",
+          "traceId": "6b08974d7b8c3245552b8914191110b5"
+        }
+      },
+      "explanation": "The context provided contains no information about the user, no prior conversation data, no tool outputs, and no system context establishing facts like the user's name, communication preference, or purchase history. The assistant's response presents specific personal details (name 'Sarah', email preference, Smart Watch purchase with a specific date) as if retrieved from an account, but there is no evidence in the given context that this information exists or was provided by any tool. Since no ground truth or tool output is given to verify these claims, and the context only shows a generic question 'Do you know anything about me?', the assistant appears to have fabricated specific personal details without any supporting data. This constitutes hallucination of information not grounded in the provided context.",
+      "value": 0,
+      "label": "Incorrect",
+      "tokenUsage": {
+        "inputTokens": 884,
+        "outputTokens": 173,
+        "totalTokens": 1057
+      }
+    },
+    {
+      "evaluatorArn": "arn:aws:bedrock-agentcore:::evaluator/Builtin.Correctness",
+      "evaluatorId": "Builtin.Correctness",
+      "evaluatorName": "Builtin.Correctness",
+      "context": {
+        "spanContext": {
+          "sessionId": "039ef51e-c79e-4477-9b32-954bf8953c43",
+          "traceId": "6b089db52c5a2ca9644769a014d16095"
+        }
+      },
+      "explanation": "The assistant accurately reports the tool results: Laptop Stand (PROD-003), warranty 6 months, status expired, expiration date January 1, 2026. These all match the tool output exactly. The additional claim that PROD-003 is not the Smart Watch is consistent with the product info tool result (Laptop Stand, accessories category). However, the assistant introduces an unverified claim that the user 'bought recently' a Smart Watch - this is not supported by any tool output or context provided, which could be seen as a hallucination. This is a minor addition not grounded in the given context. Aside from this, all other factual claims align with the tool outputs. Since the core information (warranty details) is fully correct and the Smart Watch mention is a minor unsupported addition rather than a central claim, this slightly reduces confidence but doesn't invalidate the main answer.",
+      "value": 0.5,
+      "label": "Partially Correct",
+      "tokenUsage": {
+        "inputTokens": 1229,
+        "outputTokens": 215,
+        "totalTokens": 1444
+      }
+    },
+    {
+      "evaluatorArn": "arn:aws:bedrock-agentcore:::evaluator/Builtin.Correctness",
+      "evaluatorId": "Builtin.Correctness",
+      "evaluatorName": "Builtin.Correctness",
+      "context": {
+        "spanContext": {
+          "sessionId": "039ef51e-c79e-4477-9b32-954bf8953c43",
+          "traceId": "6b089e1e56a4bf0a090e667a40322f8a"
+        }
+      },
+      "explanation": "The assistant's response accurately summarizes the search results about Bluetooth headphone troubleshooting, organizing them into logical categories (connection problems, sound issues, audio cutting out/distorted). The content faithfully reflects the information from the tool results - restart procedures, forget/re-pair steps, device limits, volume checks, cleaning speaker grilles, testing with stored audio, reducing interference, and restarting devices are all accurately drawn from the search results. The response does not introduce any hallucinated or incorrect information. One minor unsupported claim is 'since I know you prefer email updates' - this detail about email preference isn't established anywhere in the given context, which could be seen as a minor fabrication, but it's a small aside that doesn't affect the core troubleshooting content's accuracy. The main substantive content is correct and well-aligned with the tool outputs.",
+      "value": 1,
+      "label": "Perfectly Correct",
+      "tokenUsage": {
+        "inputTokens": 3930,
+        "outputTokens": 221,
+        "totalTokens": 4151
+      }
+    },
+    {
+      "evaluatorArn": "arn:aws:bedrock-agentcore:::evaluator/Builtin.Correctness",
+      "evaluatorId": "Builtin.Correctness",
+      "evaluatorName": "Builtin.Correctness",
+      "context": {
+        "spanContext": {
+          "sessionId": "20752e05-2bf0-406b-8171-44470ca86fca",
+          "traceId": "6b08a2c8461a41706a906e5d6af67e5f"
+        }
+      },
+      "explanation": "The assistant accurately relays all details from the tool result: 30-day return window, requirement for original packaging and unused/defective condition, and full refund to original payment method. No factual errors are introduced, and no information contradicts the tool output. The additional offer to help with warranty or product information is a reasonable conversational addition and doesn't introduce inaccuracies. All claims match the ground truth tool result exactly.",
+      "value": 1,
+      "label": "Perfectly Correct",
+      "tokenUsage": {
+        "inputTokens": 997,
+        "outputTokens": 113,
+        "totalTokens": 1110
+      }
+    },
+    {
+      "evaluatorArn": "arn:aws:bedrock-agentcore:::evaluator/Builtin.Correctness",
+      "evaluatorId": "Builtin.Correctness",
+      "evaluatorName": "Builtin.Correctness",
+      "context": {
+        "spanContext": {
+          "sessionId": "bfe65d69-5010-4ba7-b015-4b250f39b92e",
+          "traceId": "6b08a4e2433c44e23c4bc6643b8d89c3"
+        }
+      },
+      "explanation": "The tool result shows product 'Wireless Headphones', warranty_months 12, status 'active', expires '2027-03-01'. The assistant's response accurately reflects all these values: product name, 12-month warranty, active status, and expiration date correctly formatted as March 1, 2027. All facts match the tool output exactly. No hallucinated or incorrect information is present. The offer to check return policy is a reasonable follow-up and doesn't introduce inaccuracy.",
+      "value": 1,
+      "label": "Perfectly Correct",
+      "tokenUsage": {
+        "inputTokens": 1019,
+        "outputTokens": 129,
+        "totalTokens": 1148
+      }
+    },
+    {
+      "evaluatorArn": "arn:aws:bedrock-agentcore:::evaluator/Builtin.Correctness",
+      "evaluatorId": "Builtin.Correctness",
+      "evaluatorName": "Builtin.Correctness",
+      "context": {
+        "spanContext": {
+          "sessionId": "0628d25e-b76a-480f-811c-8ed046405cb9",
+          "traceId": "6b08aa54514dc06d5d2777aa17502396"
+        }
+      },
+      "explanation": "The assistant accurately reports the price ($249.99), description (fitness tracker with heart rate monitor, GPS, 5-day battery), and warranty details (24 months, active, expires 2028-01-15), all matching the tool outputs exactly. No factual errors are present, and the response addresses the user's core question about price and warranty. The offer to check return policy is a reasonable addition and doesn't introduce inaccuracies.",
+      "value": 1,
+      "label": "Perfectly Correct",
+      "tokenUsage": {
+        "inputTokens": 1205,
+        "outputTokens": 119,
+        "totalTokens": 1324
+      }
+    },
+    {
+      "evaluatorArn": "arn:aws:bedrock-agentcore:::evaluator/Builtin.Correctness",
+      "evaluatorId": "Builtin.Correctness",
+      "evaluatorName": "Builtin.Correctness",
+      "context": {
+        "spanContext": {
+          "sessionId": "0628d25e-b76a-480f-811c-8ed046405cb9",
+          "traceId": "6b08aa603214ef4e64160c010316b7f2"
+        }
+      },
+      "explanation": "The assistant accurately restates the tool's return policy: 30-day window, full refund within 15 days, replacement for defective items after 15 days. It correctly notes the user bought the headphones 'last week', so likely within the 15-day window, and suggests a replacement option since the item is defective - this is a reasonable inference, not a factual error, since 'last week' is ambiguous but plausibly within 15 days. The offer to check warranty is a reasonable follow-up, not a factual claim. No contradictions with the tool output are present. All stated facts align with the tool result.",
+      "value": 1,
+      "label": "Perfectly Correct",
+      "tokenUsage": {
+        "inputTokens": 1552,
+        "outputTokens": 150,
+        "totalTokens": 1702
+      }
+    },
+    {
+      "evaluatorArn": "arn:aws:bedrock-agentcore:::evaluator/Builtin.Correctness",
+      "evaluatorId": "Builtin.Correctness",
+      "evaluatorName": "Builtin.Correctness",
+      "context": {
+        "spanContext": {
+          "sessionId": "0628d25e-b76a-480f-811c-8ed046405cb9",
+          "traceId": "6b08aa654004177b3844b88b0c110c39"
+        }
+      },
+      "explanation": "The assistant correctly reports the warranty info from the tool: 12 months, active, expires 2027-03-01, for PROD-001 (Wireless Headphones). This matches the tool output exactly. It then connects this to the user's earlier statement about headphones not working, assuming PROD-001 is the headphones in question, which is a reasonable inference given context (the user asked about headphones, then asked to check PROD-001 specifically). The assistant reiterates the return policy details (15-day full refund window, replacement after) which were correctly stated in the prior turn and consistent with the tool output. No factual errors are present; the claims align with tool results. The response does not introduce hallucinated information. It's a reasonable and accurate synthesis.",
+      "value": 1,
+      "label": "Perfectly Correct",
+      "tokenUsage": {
+        "inputTokens": 1894,
+        "outputTokens": 189,
+        "totalTokens": 2083
+      }
+    },
+    {
+      "evaluatorArn": "arn:aws:bedrock-agentcore:::evaluator/Builtin.Correctness",
+      "evaluatorId": "Builtin.Correctness",
+      "evaluatorName": "Builtin.Correctness",
+      "context": {
+        "spanContext": {
+          "sessionId": "0628d25e-b76a-480f-811c-8ed046405cb9",
+          "traceId": "6b08aa6a3a2317d814a66632534f4a50"
+        }
+      },
+      "explanation": "The assistant's response accurately summarizes the tool results: USB-C Hub price ($54.99), return policy for accessories (14-day window, must be in original packaging and unused, refund as store credit or exchange), and warranty details (12 months, active, expires 2027-06-20). All these match the tool outputs exactly. The assistant's additional interpretive statements (e.g., 'If you're past 14 days or you've already used the hub, it may not qualify for a return' and 'The active warranty could still cover a repair or replacement if it's defective') are reasonable inferences consistent with the policy data and don't introduce factual errors. The follow-up question to the user is appropriate and doesn't affect correctness. No contradictions with tool data are present, and no hallucinated information is introduced.",
+      "value": 1,
+      "label": "Perfectly Correct",
+      "tokenUsage": {
+        "inputTokens": 2614,
+        "outputTokens": 200,
+        "totalTokens": 2814
+      }
+    },
+    {
+      "evaluatorArn": "arn:aws:bedrock-agentcore:::evaluator/Builtin.Correctness",
+      "evaluatorId": "Builtin.Correctness",
+      "evaluatorName": "Builtin.Correctness",
+      "context": {
+        "spanContext": {
+          "sessionId": "0628d25e-b76a-480f-811c-8ed046405cb9",
+          "traceId": "6b08aa701e2b482e635f80b90e7fb64d"
+        }
+      },
+      "explanation": "The assistant lists capabilities based on tools actually used in the conversation: product info lookup, return policy lookup, and warranty checks. These are accurately described. However, it also claims 'Web search: I can search the web for general information that goes beyond our product catalog.' There is no evidence in the conversation that such a tool exists or was used - this appears to be a hallucinated capability not grounded in any tool call history. This is a factual overstatement/fabrication about the assistant's actual capabilities, which could mislead the user. The rest of the summary (claims about PROD-001 warranty, USB-C hub return policy, etc.) is accurate and consistent with prior tool outputs. The fabricated 'web search' capability is a meaningful inaccuracy since it's presented as a concrete capability rather than speculation.",
+      "value": 0.5,
+      "label": "Partially Correct",
+      "tokenUsage": {
+        "inputTokens": 2920,
+        "outputTokens": 204,
+        "totalTokens": 3124
+      }
+    },
+    {
+      "evaluatorArn": "arn:aws:bedrock-agentcore:::evaluator/Builtin.Correctness",
+      "evaluatorId": "Builtin.Correctness",
+      "evaluatorName": "Builtin.Correctness",
+      "context": {
+        "spanContext": {
+          "sessionId": "0a9d103a-c8be-4f93-9571-fa28ed2658c4",
+          "traceId": "6b08ab4a7e8bb3a53b69141b14473a5b"
+        }
+      },
+      "explanation": "The user asked if the assistant remembers their name. Since no name was mentioned anywhere in the conversation (only one turn, with no name given), the assistant correctly states it does not have the name and nothing in the conversation mentioned it. This is factually accurate given the context. The assistant also offers to use a name if provided and pivots to offering help, which is appropriate and does not introduce any factual errors. There are no hallucinations or incorrect claims.",
+      "value": 1,
+      "label": "Perfectly Correct",
+      "tokenUsage": {
+        "inputTokens": 829,
+        "outputTokens": 121,
+        "totalTokens": 950
+      }
+    }
+  ]
+}
