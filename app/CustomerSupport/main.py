@@ -1,9 +1,21 @@
 from strands import Agent, tool
 from bedrock_agentcore.runtime import BedrockAgentCoreApp
 from model.load import load_model
+from memory.session import get_memory_session_manager
 
 app = BedrockAgentCoreApp()
 log = app.logger
+
+SYSTEM_PROMPT="""You are a helpful and professional customer support assistant for an e-commerce company.
+Your role is to:
+- Provide accurate information using the tools available to you
+- Be friendly, patient, and understanding with customers
+- Always offer additional help after answering questions
+- If you can't help with something, direct customers to the appropriate contact
+
+You have access to tools for looking up return policies, searching product information, and more.
+Additional tools may be available at runtime — always check your full tool list and use the most appropriate tool for each customer request.
+Always use tools to get accurate, up-to-date information rather than guessing."""
 
 # --- Customer Support Tools ---
 
@@ -48,9 +60,11 @@ def get_product_info(query: str) -> str:
         Product details including name, price, category, and description
     """
     query_lower = query.lower()
+    # Search by ID
     if query.upper() in PRODUCTS:
         p = PRODUCTS[query.upper()]
         return f"{p['name']} ({query.upper()}): ${p['price']}, Category: {p['category']}, {p['description']}, Warranty: {p['warranty_months']} months"
+    # Search by keyword
     results = [f"{pid}: {p['name']} - ${p['price']} - {p['description']}" for pid, p in PRODUCTS.items()
                if query_lower in p['name'].lower() or query_lower in p['description'].lower() or query_lower in p['category'].lower()]
     if results:
@@ -61,32 +75,33 @@ tools = [get_return_policy, get_product_info]
 
 # --- Agent Setup ---
 
-_agent = None
+_agents = {}
 
-def get_or_create_agent():
-    global _agent
-    if _agent is None:
-        _agent = Agent(
+def get_or_create_agent(session_id, user_id):
+    # One agent per (session, user): each has its own Memory session manager,
+    # so a request can never be served by another user's agent.
+    key = (session_id, user_id)
+    if key not in _agents:
+        _agents[key] = Agent(
             model=load_model(),
-            system_prompt="""You are a helpful and professional customer support assistant for an e-commerce company.
-Your role is to:
-- Provide accurate information using the tools available to you
-- Be friendly, patient, and understanding with customers
-- Always offer additional help after answering questions
-- If you can't help with something, direct customers to the appropriate contact
-
-You have access to tools for looking up return policies and searching product information.
-Additional tools may be available at runtime — always check your full tool list and use the most appropriate tool for each customer request.
-Always use tools to get accurate, up-to-date information rather than guessing.""",
+            session_manager=get_memory_session_manager(session_id, user_id),
+            system_prompt=SYSTEM_PROMPT,
             tools=tools
         )
-    return _agent
+    return _agents[key]
 
 
 @app.entrypoint
 async def invoke(payload, context):
     log.info("Invoking Agent.....")
-    agent = get_or_create_agent()
+
+    session_id = context.session_id
+    user_id = context.request_headers['x-amzn-bedrock-agentcore-runtime-custom-user-id']
+
+    if not session_id or not user_id:
+        raise ValueError("session_id and user_id are required. Pass --session-id and --user-id when invoking.")
+
+    agent = get_or_create_agent(session_id, user_id)
     stream = agent.stream_async(payload.get("prompt"))
     async for event in stream:
         if "data" in event and isinstance(event["data"], str):

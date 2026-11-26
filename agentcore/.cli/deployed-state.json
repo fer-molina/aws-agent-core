@@ -1,10 +1,10 @@
 {
   "targets": {
     "default": {
+      "stackArn": "arn:aws:cloudformation:us-west-2:088849797021:stack/AgentCore-CustomerSupport-default/906ec290-e91c-11f1-b940-06c6e9212a87",
       "resources": {
         "credentials": {}
-      },
-      "stackArn": "arn:aws:cloudformation:us-west-2:088849797021:stack/AgentCore-CustomerSupport-default/906ec290-e91c-11f1-b940-06c6e9212a87"
+      }
     }
   }
 }
