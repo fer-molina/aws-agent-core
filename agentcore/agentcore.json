@@ -11,8 +11,19 @@
       "runtimeVersion": "PYTHON_3_14",
       "protocol": "HTTP",
       "requestHeaderAllowlist": [
-        "X-Amzn-Bedrock-AgentCore-Runtime-Custom-User-Id"
-      ]
+        "X-Amzn-Bedrock-AgentCore-Runtime-Custom-User-Id",
+        "Authorization"
+      ],
+      "authorizerType": "CUSTOM_JWT",
+      "authorizerConfiguration": {
+        "customJwtAuthorizer": {
+          "discoveryUrl": "https://cognito-idp.us-west-2.amazonaws.com/us-west-2_9aBdV5CiR/.well-known/openid-configuration",
+          "allowedClients": [
+            "6eoq8dk5rjd5rs37gumhlq0jcu",
+            "3adbio53bojjb81c2ne6tvpolk"
+          ]
+        }
+      }
     }
   ],
   "memories": [
@@ -41,7 +52,7 @@
   "onlineEvalConfigs": [],
   "agentCoreGateways": [
     {
-      "name": "my-gateway",
+      "name": "my-gateway-secure",
       "protocolType": "None",
       "targets": [
         {
@@ -66,7 +77,16 @@
           ]
         }
       ],
-      "authorizerType": "NONE",
+      "authorizerType": "CUSTOM_JWT",
+      "authorizerConfiguration": {
+        "customJwtAuthorizer": {
+          "discoveryUrl": "https://cognito-idp.us-west-2.amazonaws.com/us-west-2_9aBdV5CiR/.well-known/openid-configuration",
+          "allowedClients": [
+            "6eoq8dk5rjd5rs37gumhlq0jcu",
+            "3adbio53bojjb81c2ne6tvpolk"
+          ]
+        }
+      },
       "enableSemanticSearch": false,
       "exceptionLevel": "NONE"
     }
